@@ -7,6 +7,159 @@
   </head>
 
   <body>
-    <script></script>
+    在 作業-農場資訊 裡，你已經把農場的資訊都整理出來了，接下來可以準備繪製圖表的資料<br>
+    圖表的 x 軸準備使用一個叫 xAxis 的變數，類型為陣列
+    <br>
+    圖表的 y 軸準備使用一個叫 data 的變數，類型為陣列<br>
+    請使用 Object 物件方法擷取出 farmInfo 裡的 key (動物)，加入 xAxis 陣列<br>
+    請使用 Object 物件方法擷取出 farmInfo 裡的 count 屬性，加入 data 陣列<br>
+    注意：farmInfo 裡的 total 及 maleAverage 不應該被加入 xAxis 及 data 裡
+
+    <script>
+      let farm=[
+        {
+          id:1,
+          name:"豬",
+          en:"pig",
+          male:11,
+          female:5,
+          isLarge:false
+        },
+        {
+          id:2,
+          name:"虎",
+          en:"tiger",
+          male:3,
+          female:10,
+          isLarge:true
+        },
+        {
+          id:3,
+          name:"馬",
+          en:"horse",
+          male:9,
+          female:8,
+          isLarge:true
+        },
+        {
+          id:4,
+          name:"羊",
+          en:"sheep",
+          male:22,
+          female:34,
+          isLarge:false
+        },
+        {
+          id:5,
+          name:"兔",
+          en:"rabbit",
+          male:37,
+          female:4,
+          isLarge:false
+        }
+      ]
+
+
+      let farmInfo2 ={
+        pig:{
+          count: farm[0].male + farm[0].female,
+        
+        },
+        tiger:{
+          count: farm[1].male + farm[1].female,
+          
+        },
+        horse:{
+          count: farm[2].male + farm[2].female,
+          
+        },
+        sheep:{
+          count: farm[3].male + farm[3].female,
+          
+        },
+        rabbit:{
+          count: farm[4].male + farm[4].female,
+          
+        },        
+        total: 0,
+        maleAverage: 0
+      }
+
+      // 一
+      // 使用 for 迴圈遍歷 farm 陣列
+      for (let i = 0; i < farm.length; i++) {
+        // 跳過第一種動物的處理
+        if (i === 0) continue;
+
+        // 根據動物類型（en）獲取對應的 farmInfo2 項目
+        const animalType = farm[i].en;
+        const animalInfo = farmInfo2[animalType];
+
+        // 計算 groupSize
+        animalInfo.groupSize = animalInfo.count >= 50 ? '大' : animalInfo.count > 15 ? '中' : '小';
+
+        // 累加到總數量
+        farmInfo2.total += animalInfo.count;
+      }
+
+      // 計算動物的公的平均數量
+      let totalMale2 = 0;
+      for (let i = 0; i < farm.length; i++) {
+        // 跳過第一種動物的處理
+        if (i === 0) continue;
+        totalMale2 += farm[i].male;
+      }
+      farmInfo2.maleAverage = totalMale2 / (farm.length - 1)
+
+      console.log(farmInfo2);
+
+
+
+      // 二
+      let farmInfo = {
+        total: 0,
+        maleAverage: 0
+      };
+
+      let totalMale = 0;
+    
+      for(let i = 0; i < farm.length; i++) {
+        if(i === 0) {
+          continue;
+        } // 使用 continue 跳過第一種動物
+
+        let animal = farm[i];
+        let count = animal.male + animal.female;
+        farmInfo.total += count;
+        totalMale += animal.male;
+
+        let groupSize = "小";
+        if(count >= 50) {
+            groupSize = "大";
+        } else if(count > 15) {
+            groupSize = "中";
+        }
+      
+        farmInfo[animal.en] = { count, groupSize };
+      }
+
+      farmInfo.maleAverage = totalMale / (farm.length - 1); // 計算所有公的動物的數量平均值，排除第一種動物
+
+      console.log(farmInfo);
+
+      //-------------------------------------------------------------
+
+      const info = Object.entries(farmInfo);
+      console.log(info);
+      //篩選
+      const xAxis = info.filter(([key,value])=>{
+        return typeof value !== "number";
+      }).map(([key,value])=>key)
+      console.log(xAxis);
+
+      //未完成...回去寫
+
+
+    </script>
   </body>
 </html>

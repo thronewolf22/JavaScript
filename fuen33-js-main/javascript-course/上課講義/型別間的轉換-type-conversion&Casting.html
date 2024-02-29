@@ -75,7 +75,36 @@
     console.log(newInfo);
     console.log(Info);
 
+    //keys() 把物件屬性的key轉換成陣列
+    const score ={
+      Allie:80,
+      Tom:70,
+      John:90,
+    }
+    console.log(Object.keys(score));
+
+    //values() 把物件屬性的value轉換成陣列
+    console.log(Object.values(score));
+
+    //entries() 把物件屬性的key,value轉換成陣列
+    console.log(Object.entries(score));
+
+    const scoreKeys1 = Object.entries(score).map((item)=>{
+      return item.key;
+    })
+    //解構 賦值寫法
+    const scoreKeys2 = Object.entries(score).map(([key, value])=>{
+      return key;
+    })
+
+    console.log(scoreKeys1);
+    console.log(scoreKeys2);
+
+    //Object.fromEntries() 將陣列轉換為物件
+    console.log(Object.fromEntries(Object.entries(score)));
+
   </script>
 </body>
+
 
 </html>

@@ -4,9 +4,176 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>瀏覽器物件模型 & 文件物件模型 BOM & DOM</title>
+    <style>
+      .image {
+        width: 100%;
+      }
+    </style>
   </head>
 
   <body>
-    <script></script>
+   
+    <div class="container"></div>
+    <div id="content" data-index="0">
+      <h1 class="title">蜂蜜大蒜烤雞腿食譜</h1>
+      <img class="image" src="" alt="image" />
+      <p class="subtitle"></p>
+      <table id="table">
+        <thead>
+          <tr>
+            <th scope="col">編號</th>
+            <th scope="col">材料</th>
+            <th scope="col">量</th>
+            <th scope="col">單位</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>雞腿</td>
+            <td>4</td>
+            <td>個</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>蜂蜜</td>
+            <td>1/4</td>
+            <td>杯</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>大蒜</td>
+            <td>4</td>
+            <td>瓣</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>橄欖油</td>
+            <td>2</td>
+            <td>湯匙</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="steps">
+        <ul class="items">
+          <li class="item">
+            <strong>預熱烤箱：</strong>
+            <span>將烤箱預熱至 200 度攝氏（約 400 度華氏）。</span>
+          </li>
+          <li class="item">
+            <strong>準備調味醬汁：</strong>
+            <span id="text">在一個小碗中，混合蜂蜜、切碎的大蒜和橄欖油。</span>
+          </li>
+          <li class="item">
+            <strong>準備雞腿：</strong>
+            <span>在烤盤上放一張烤紙，將雞腿排放在烤盤上。使用刷子，將蜂蜜大蒜醬汁均勻塗抹在雞腿的表面。</span>
+          </li>
+          <li class="item">
+            <strong>烤制雞腿：</strong>
+            <span>將雞腿放入預熱的烤箱中，烤約 40 至 45 分鐘，或直到雞腿表面呈金黃色且熟透。</span>
+          </li>
+          <li class="item">
+            <strong>上桌享用：</strong>
+            <span>從烤箱中取出雞腿，稍微冷卻後即可上桌享用。</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script> 
+      console.log(window);
+      // alert("hello");
+      //實務上盡量不要用，太煩人了
+
+      // const input = prompt("what's your name?","小明");
+      // console.log(input);
+
+      //setTimeout() 設置在一定時間後做什麼事
+      // setTimeout(() => {
+      //   console.log("延遲三秒的hello");
+      // }, 3000);//延遲3000毫秒後執行
+
+      //setInterval() 設置每隔一定時間做什麼事
+      // let sec =0;
+      // const interval = setInterval(() => {
+      //   console.log(`${sec}秒過去了`);
+      //   sec++;
+      //   if (sec>5) {
+      //     clearInterval(interval);
+      //   }
+      // }, 1000);//每1秒執行
+
+      //location 當前頁面的資訊
+      // console.log(location);
+      // console.log(location.href);//當前頁面的URL
+      // location.href = "https://google.com";//更改頁面的URL
+
+      //navigator 當前瀏覽器的資訊
+      // console.log(navigator);
+      // console.log(navigator.userAgent);//瀏覽器的資訊
+
+      //history 當前頁面的歷史紀錄
+      // console.log(history);
+      // console.log(history.state);//當前頁面的歷史紀錄
+      // console.log(history.go(-1));//回到上一頁
+      // console.log(history.back());//回到上一頁
+      // console.log(history.forward());//前往下一頁
+
+
+
+    </script>
+    <script>
+      const tableEl = document.getElementById("table");
+      console.log(tableEl);
+      tableEl.style.backgroundColor = "lightblue";
+
+      //用元素標籤來選擇
+      const thEls = document.getElementsByTagName("th");
+      console.log(thEls);
+      for(let thEl of thEls){
+        thEl.style.color = "red";
+      }
+
+      // 用元素class來選擇
+      const titleEls = document.getElementsByClassName("title");
+      console.log(titleEls);
+      titleEls[0].textContent = "(改)蜂蜜大蒜烤雞腿食譜";
+      titleEls[0].innerText ="(再改)蜂蜜大蒜烤雞腿食譜"
+
+      //css選擇器: 選到符合選擇器的第一個元素
+      const imageEl = document.querySelector(".image");
+      console.log(imageEl);
+      imageEl.src = "https://en.pimg.jp/084/265/767/1/84265767.jpg";
+
+      const pEl = document.querySelector("p");
+      console.log(pEl);
+      pEl.innerHTML = "這是一道<em>簡單又好吃<em>的料理";
+
+      const strongEls = document.querySelectorAll("strong");//選擇符合的所有
+      console.log(strongEls);
+
+      for (let i =0; i < strongEls.length; i++) {
+        strongEls[i].style.fontSize = "20px";
+      }
+
+      const contentEl = document.querySelector(`#content`);
+      contentEl.dataset.index = "1";
+
+      const textEl = document.querySelector(`#text`);
+      textEl.parentNode.parentNode.childNodes[3].querySelector("strong").style.textDecoration = "underline";
+
+      //回去重聽
+
+      //創建DOM元素
+      const buttonEl = document.createElement("button");
+      buttonEl.style.backgroundColor = "red";
+      buttonEl.innerText = "按鈕";
+      const containerEl = document.querySelector("container");
+      contentEl.appendChild(buttonEl);
+      //但不常這樣做，蠻耗效能
+
+      buttonEl.remove();//刪除按鈕
+
+
+    </script>
   </body>
 </html>

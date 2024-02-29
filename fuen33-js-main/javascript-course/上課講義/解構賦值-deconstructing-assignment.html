@@ -7,6 +7,44 @@
   </head>
 
   <body>
-    <script></script>
+    解構賦值 deconstructing assignment
+    <script>
+      const fruits = ["lemon", "banana", "orange", "apple"];
+      // const lemon = "lemon";
+      // const banana = "banana";
+      // const orange = "orange";
+      // const apple = "apple";
+
+      //解構賦值(需按照變數名稱來填入)
+      //陣列用位置(index)賦值
+      // const [lemon, banana, orange, apple] = ["lemon", "banana", "orange", "apple"];
+      //當有變數名稱時，可以直接用:
+      // const [lemon, banana, orange, apple, peach] = fruits;
+
+      // console.log(lemon);
+      // console.log(banana);
+      // console.log(orange);
+      // console.log(apple);
+      // console.log(peach);//undefined(沒有可對應的值)
+
+      //如果要跳過，可以用逗號來分隔
+      const [, banana, orange, apple] = fruits;
+      console.log(banana);
+      
+      const fruitsObj ={
+        lemon: "檸檬",
+        banana: "香蕉",
+        orange: "橘子",
+        apple: "蘋果",
+      }
+
+      //物件用key賦值
+      const{lemon, banana:myBanana, orange:myOrange, apple:myApple} = fruitsObj;//重複的變數名稱可以用:
+      console.log(lemon);
+      console.log(banana);
+      console.log(myBanana);
+
+
+    </script>
   </body>
 </html>

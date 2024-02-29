@@ -7,6 +7,51 @@
   </head>
 
   <body>
-    <script></script>
+   
+    <button onclick="showAlert()">HTML onclick 呼叫 alert</button>
+    <!-- showAlert要加() -->
+    <button id="alertBtn">DOM onclick 呼叫 alert</button>
+    <button id="listenerAlertBtn">DOM addEventListener 呼叫 alert</button>
+
+    <div>
+      <button id="mouseoverBtn">mouseover 事件</button>
+      <button id="mouseoutBtn">mouseout 事件</button>
+      <input type="text" id="focusInput" value="focus事件(解除:blur事件)">
+    </div>
+    <script>
+      function showAlert(){
+        alert("Hello");
+      }
+
+      document.querySelector("#alertBtn").onclick = showAlert;//showAlert這裡不用()
+
+      document.getElementById("listenerAlertBtn").addEventListener("click", showAlert);
+
+      document.querySelector("#mouseoverBtn").addEventListener("mouseover", function(){
+        console.log("mouseover");
+      });
+
+      document.querySelector("#mouseoutBtn").addEventListener("mouseout", function(){
+        console.log("mouseout");
+      });
+
+      //focus，維持focus狀態
+      document.querySelector("#focusInput").addEventListener("focus", function(){
+        console.log("focus");
+      });
+
+      //blur，解除focus狀態
+      document.querySelector("#focusInput").addEventListener("blur", function(){
+        console.log("blur");
+      });
+
+      //keydown 鍵盤按"下"時觸發
+
+      //keypress 鍵盤按下時觸發字符輸入
+
+      //keyup 按鍵釋放時觸發
+
+
+    </script>
   </body>
 </html>

@@ -7,6 +7,34 @@
   </head>
 
   <body>
-    <script></script>
+    請寫一個函數 numGenerator，可以接受兩個參數 num, type，並且回傳一個物件 {numbers: [], max: ?, min: ?}<br>
+    根據傳入的參數 type 來決定要以四捨五入 (round)、無條件捨去 (floor)，或是無條件進位 (ceil) 哪種方式來處理隨機數字<br>
+    如果傳入的 num 是一個陣列，numGenerator 會把非數字的字串變成 0，並進行 type 的處理<br>
+    如果傳入的 num 是一個數字 n，numGenerator 可以隨機產生 n 個 0 - 100 之間的數字，並且進行 type 的處理<br>
+    回傳物件中，除了會回傳 numbers 為處理過後的數字陣列之外，還會回傳屬性 max 跟 min，分別是數組中的最大與最小數字
+
+    <script>
+      function numGenerator(num, type){
+        switch(type){
+          case "round":
+            default:
+            return Math.round(num);
+            break;
+          case "floor":
+            return Math.floor(num);
+            break;
+          case "ceil":
+            return Math.ceil(num);
+            break;
+        }
+
+
+        
+        return {numbers: [], max: 0, min: 0};
+      }
+
+      console.log(numGenerator(3.49, "round"));
+    </script>
+    
   </body>
 </html>
