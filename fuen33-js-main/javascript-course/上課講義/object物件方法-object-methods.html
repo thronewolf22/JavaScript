@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object 物件方法 Object Methods</title>
+  </head>
+
+  <body>
+    Object 物件方法 Object Methods
+    <script>
+      const info = {
+        name:"wolf",
+        color:"white",
+      }
+
+      //淺拷貝
+      const newInfo ={...info};//展開運算子
+      const newInfo2 = Object.assign({},info);//Object.assign
+
+      newInfo2.color = "black";
+      console.log(newInfo2);//black
+      console.log(newInfo);//white
+      console.log(info);//white
+    </script>
+  </body>
+</html>

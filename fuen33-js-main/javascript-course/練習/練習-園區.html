@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習-園區</title>
+  </head>
+
+  <body>
+    <script>
+      let arrayFarm=[
+        {
+          id:1,
+          name:"豬",
+          en:"pig",
+          male:11,
+          female:5,
+          isLarge:false
+          
+        },
+        {
+          id:2,
+          name:"虎",
+          en:"tiger",
+          male:3,
+          female:10,
+          isLarge:true
+        },
+        {
+          id:3,
+          name:"馬",
+          en:"horse",
+          male:9,
+          female:8,
+          isLarge:true
+        },
+        {
+          id:4,
+          name:"羊",
+          en:"sheep",
+          male:22,
+          female:34,
+          isLarge:false
+        },
+        {
+          id:5,
+          name:"兔",
+          en:"rabbit",
+          male:37,
+          female:4,
+          isLarge:false
+        }
+      ]
+      
+      let Pig ={...arrayFarm[0]};
+      let Tiger ={...arrayFarm[1]};
+      let Horse ={...arrayFarm[2]};
+      let Sheep ={...arrayFarm[3]};
+      let Rabbit ={...arrayFarm[4]};
+
+      if(Pig.id %2 !==0){
+            Pig.area = "A"//奇數
+          }
+          else{
+            Pig.area = "B"//偶數
+          }
+
+      if(Tiger.id %2 !==0){
+            Tiger.area = "A"
+          }
+          else{
+            Tiger.area = "B"
+          }
+
+      if(Horse.id %2 !==0){
+            Horse.area = "A"
+          }
+          else{
+            Horse.area = "B"
+          }
+
+      if(Sheep.id %2 !==0){
+            Sheep.area = "A"
+          }
+          else{
+            Sheep.area = "B"
+          }
+
+      if(Rabbit.id %2 !==0){
+            Rabbit.area = "A"
+          }
+          else{
+            Rabbit.area = "B"
+          }
+      
+      //index
+      let newFarm = [];
+      newFarm[0] = Pig;
+      newFarm[1] = Tiger;
+      newFarm[2] = Horse;
+      newFarm[3] = Sheep;
+      newFarm[4] = Rabbit;
+
+      //展開運算子
+      let testFarm = [{...Pig},{...Tiger},{...Horse},{...Sheep},{...Rabbit}];
+      
+      console.log(arrayFarm);
+      console.log(newFarm);
+      console.log(testFarm);
+
+      //重構
+      let newFarm2 =[];
+      for (let i = 0; i < arrayFarm.length; i++) {
+        let animal = {...arrayFarm[i]};
+        if (animal.id % 2 !== 0) {
+          animal.area = "A";
+        } else {
+          animal.area = "B";
+        }
+        newFarm2[i] = animal;
+      }
+      console.log(newFarm2);
+    
+
+    </script>
+  </body>
+</html>

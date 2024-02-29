@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function subtract(a,b){
+        return a-b;
+      }
+
+      function SUM(numbers){
+        let result = 0;
+        for(let number of numbers){
+              result += number;
+        }
+        return result;            
+      }
+      
+      //箭頭函數
+      let sumResuslt =(function (type, ...numbers){
+        let a = numbers[0];
+        let b = numbers[1];
+        
+        switch(type){
+          case "add":
+          default://type不符的時候，默認為add
+            return a+b;
+            break;
+          case "subtract":
+            return subtract(a,b);
+            break;
+          case "multiply":
+            return a*b;
+            break;
+          case "divide":
+            return a/b;
+            break;
+          case "mod":
+            return a%b;
+            break;
+          case "power":
+            return a**b;
+            break;
+          case "sum":
+            let sum =0;
+            for(let i=0;i<numbers.length;i++){
+              sum+=numbers[i];
+            }
+            return sum;            
+            break;
+          case"SUM":
+            return SUM(numbers);
+            break;
+        }
+      })("SUM",5,3,1,2,3); 
+      
+    //   let sumResuslt = calculator("SUM",5,3,1,2,3);
+        console.log(sumResuslt);
+      
+    </script>
+</body>
+</html>

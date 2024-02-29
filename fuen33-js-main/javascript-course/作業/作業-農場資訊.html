@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作業-農場資訊</title>
+  </head>
+
+  <body>
+    <script>
+      let farm=[
+        {
+          id:1,
+          name:"豬",
+          en:"pig",
+          male:11,
+          female:5,
+          isLarge:false
+        },
+        {
+          id:2,
+          name:"虎",
+          en:"tiger",
+          male:3,
+          female:10,
+          isLarge:true
+        },
+        {
+          id:3,
+          name:"馬",
+          en:"horse",
+          male:9,
+          female:8,
+          isLarge:true
+        },
+        {
+          id:4,
+          name:"羊",
+          en:"sheep",
+          male:22,
+          female:34,
+          isLarge:false
+        },
+        {
+          id:5,
+          name:"兔",
+          en:"rabbit",
+          male:37,
+          female:4,
+          isLarge:false
+        }
+      ]
+
+
+      let farmInfo2 ={
+        pig:{
+          count: farm[0].male + farm[0].female,
+        
+        },
+        tiger:{
+          count: farm[1].male + farm[1].female,
+          
+        },
+        horse:{
+          count: farm[2].male + farm[2].female,
+          
+        },
+        sheep:{
+          count: farm[3].male + farm[3].female,
+          
+        },
+        rabbit:{
+          count: farm[4].male + farm[4].female,
+          
+        },        
+        total: 0,
+        maleAverage: 0
+      }
+
+      // 一
+      // 使用 for 迴圈遍歷 farm 陣列
+      for (let i = 0; i < farm.length; i++) {
+        // 跳過第一種動物的處理
+        if (i === 0) continue;
+
+        // 根據動物類型（en）獲取對應的 farmInfo2 項目
+        const animalType = farm[i].en;
+        const animalInfo = farmInfo2[animalType];
+
+        // 計算 groupSize
+        animalInfo.groupSize = animalInfo.count >= 50 ? '大' : animalInfo.count > 15 ? '中' : '小';
+
+        // 累加到總數量
+        farmInfo2.total += animalInfo.count;
+      }
+
+      // 計算動物的公的平均數量
+      let totalMale2 = 0;
+      for (let i = 0; i < farm.length; i++) {
+        // 跳過第一種動物的處理
+        if (i === 0) continue;
+        totalMale2 += farm[i].male;
+      }
+      farmInfo2.maleAverage = totalMale2 / (farm.length - 1)
+
+      console.log(farmInfo2);
+
+
+
+      // 二
+      let farmInfo = {
+        total: 0,
+        maleAverage: 0
+      };
+
+      let totalMale = 0;
+    
+      for(let i = 0; i < farm.length; i++) {
+        if(i === 0) {
+          continue;
+        } // 使用 continue 跳過第一種動物
+
+        let animal = farm[i];
+        let count = animal.male + animal.female;
+        farmInfo.total += count;
+        totalMale += animal.male;
+
+        let groupSize = "小";
+        if(count >= 50) {
+            groupSize = "大";
+        } else if(count > 15) {
+            groupSize = "中";
+        }
+      
+        farmInfo[animal.en] = { count, groupSize };
+      }
+
+      farmInfo.maleAverage = totalMale / (farm.length - 1); // 計算所有公的動物的數量平均值，排除第一種動物
+
+      console.log(farmInfo);
+      
+      //forEach迴圈
+      // farm.forEach((animal, index) => {
+      //  if(index === 0) return; // 跳過第一種動物
+
+      //   let count = animal.male + animal.female;
+      //   farmInfo.total += count;
+      //   totalMale += animal.male;
+
+      //   let groupSize = count >= 50 ? "大" : count > 15 ? "中" : "小";
+      //   farmInfo[animal.en] = { count, groupSize };
+      // });
+
+      //for...of迴圈
+      // let animalCount = 0;
+
+      // for (const [index, animal] of farm.entries()) {
+      //     if (index === 0) continue; // 跳過第一種動物
+
+      //     let count = animal.male + animal.female;
+      //     farmInfo.total += count;
+      //     totalMale += animal.male;
+
+      //     let groupSize = "小";
+      //     if (count >= 50) {
+      //     groupSize = "大";
+      //     } else if (count > 15) {
+      //     groupSize = "中";
+      //     }
+
+      //     farmInfo[animal.en] = { count, groupSize };
+      //     animalCount++;
+      // }
+
+      // let farmInfo3 ={
+      //   pig:{
+      //     count: farm[0].male + farm[0].female,
+      //     group: farm[0].male >= 50 ? "大" : farm[0].male > 15 ? "中" : "小",
+      //   },
+      //   tiger:{
+      //     count: farm[1].male + farm[1].female,
+      //     group: farm[1].male >= 50 ? "大" : farm[1].male > 15 ? "中" : "小",
+      //   },
+      //   horse:{
+      //     count: farm[2].male + farm[2].female,
+      //     group: farm[2].male >= 50 ? "大" : farm[2].male > 15 ? "中" : "小",
+      //   },
+      //   sheep:{
+      //     count: farm[3].male + farm[3].female,
+      //     group: farm[3].male >= 50 ? "大" : farm[3].male > 15 ? "中" : "小",
+      //   },
+      //   rabbit:{
+      //     count: farm[4].male + farm[4].female,
+      //     group: farm[4].male >= 50 ? "大" : farm[4].male > 15 ? "中" : "小",
+      //   },
+      //   total: farmInfo.total,
+      //   maleAverage: farmInfo.maleAverage,
+      // }
+
+      let farmInfo3 = {};
+
+      
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>資料類型 Data Types</title>
+  </head>
+
+  <body>
+    <script>
+      let a = "A";//字串
+      console.log(a);
+
+      let b = 1;//數字
+      console.log(b);
+
+      let c = true;//布林值
+      console.log(c);
+
+      let d = undefined;//未定義
+      console.log(d);
+
+      let e = null;//空值
+      console.log(e);
+
+      //物件
+      let f = {
+        name: "fuen33",
+        age: 33
+      }
+      console.log(f);
+
+      let info = {
+        name: "fuen33",
+        color:"red",
+        greeting: function(){
+          console.log("hi");
+        }
+      }
+      console.log(info);
+      console.log(info.name);//物件的屬性(property)
+      console.log(info["color"]);//物件的屬性(property)
+
+      info.greeting();
+
+      //用變數當key
+      let key = "color";
+      console.log(info[key]);
+
+      let color = "color";
+      console.log(info[color]);
+      console.log(info["color"]);
+      //用.也可以，但如果key想放變數，就只能用[]
+      console.log(info.color);
+
+      console.log(info);
+      info.color = "blue";
+      console.log(info);
+      console.log(info.color);
+
+      let array = ["apple", 0, false, undefined, null, { name: "fuen33" }];
+      console.log(array);
+
+      let greeting = "哈囉你好嗎";
+      console.log(array[0]);
+      console.log(greeting[0])
+      console.log(array.length);
+      console.log(greeting.length);
+
+      let lastIndex = greeting.length - 1;
+      console.log(greeting[lastIndex]);
+
+      //傳值 vs 傳址
+      
+      //傳值(基本資料型態)
+      let x = 1;
+      let y = x;
+      console.log("x",x);
+      console.log("y",y);
+
+      y = 2;
+      console.log("x",x);
+      console.log("y",y);
+
+      x = 3;
+      console.log("x",x);
+      console.log("y",y);
+
+      //傳址(物件資料型態)
+      let car1={
+        brand:"BMW",
+        color:"red"
+      }
+      let car2=car1;
+      console.log(car1);
+      console.log(car2);
+
+      car2.color="blue";
+      console.log(car1);
+      console.log(car2);
+
+      //用{}開新的記憶體位置，屬性就可以互不影響
+      //但因為不是複製，所以沒有brand屬性
+      let car3=car1;
+      car3={
+        color:"green",
+      }
+      console.log(car1);
+      console.log(car2);
+      console.log(car3);
+
+      //Object.assign 複製時不修改到原本的物件
+      //有color屬性，也有brand屬性
+      let car4 =Object.assign({},car1);
+      car4.color="yellow";
+      console.log(car1);
+      console.log(car2);
+      console.log(car3);
+      console.log(car4);
+
+      //... 展開運算子
+      let car5={...car1};
+      console.log("car1",car1);
+      console.log("car5",car5);
+
+      car5.color="orange";
+      console.log("car1",car1);
+      console.log("car5",car5);
+
+      let car6={
+        color:"white",
+        owner:{
+          name:"wolf",
+        }
+      };
+      
+      let car7 = {...car6};
+      console.log(car6);
+      console.log(car7);
+
+      //改car7的顏色，car6的不會被改到
+      car7.color="black";
+      console.log("car6",car6);
+      console.log("car7",car7);
+
+      //因為不同層，所以改car6的owner裡面的值的時候，其實也是改到car7的owner裡面
+      car7.owner.name="Tom";
+      console.log("car6",car6);
+      console.log("car7",car7);
+    </script>
+  </body>
+</html>

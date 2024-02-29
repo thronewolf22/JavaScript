@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函數 Function</title>
+  </head>
+
+  <body>
+    <script>
+      
+      // print();
+      // function print(){
+      //   console.log("Hello");
+      // }
+      //可以這要操作是因為函數陳述式的提升
+      // 實際上應該是:
+      function print(name ="wolf", greeting = "Hello"){
+        console.log(`${greeting}, ${name}`);
+      }
+      print("Tom","Hi");//呼叫引數
+      print();
+      print("Jerry");
+      print("Bye");
+      //再回去參考老師寫的
+
+
+      //---其餘運算子(剩餘參數)---
+      function printNumbers(...num){
+        console.log(num);
+      }
+
+      printNumbers(1,4,5,8,10);
+
+
+      //---Callback 回調函數---
+      function wakeUp(callback){
+        console.log("起床了");
+        callback();
+      }
+      function washFace(){
+        console.log("洗臉");
+      }
+      function brushTeeth(){
+        console.log("刷牙");
+      }
+      //呼叫不同的函數
+      wakeUp(washFace);
+      wakeUp(brushTeeth);
+      
+      //---回傳函數 Return---
+      function add(a,b){
+        return a+b;
+      }
+      console.log(add(1,2));//沒有存下來，之後就不能用了
+
+      //用變數存下來
+      let result = add(1,2);
+      console.log(result);
+      
+      //函數表達式      
+      let print2 = function(){
+        //let print2變成變數存起來，函數名稱變成變數名稱
+        // function()變成匿名函數
+        console.log("Hello");
+      }
+      print2();
+
+      //箭頭函數
+      let arrowPrint = () => {
+        console.log("Hello");
+      }
+      arrowPrint();
+
+      let arrowPrint2 = (name, greeting ="Hi") => {
+        console.log(`${greeting}, ${name}`);
+      }
+      arrowPrint2("Wolf");
+
+      function calculator(a, b){
+        console.log(a+b);
+        console.log(a-b);
+        console.log(a*b);
+        console.log(a/b);
+        console.log(a%b);
+        console.log(a**b);
+
+      }
+
+      calculator(1,2);
+
+
+      //---立即執行函數---
+      (function(greeting){
+        console.log(greeting);
+      })("Hi");
+
+      ((greeting)=>{
+        console.log(greeting);
+      })("Hello");
+
+      let ADD = ((a,b)=>{
+        return a + b;
+      })(1,2);
+      console.log(ADD);
+      
+
+
+
+    </script>
+  </body>
+</html>

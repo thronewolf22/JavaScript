@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number 物件方法 Number Methods</title>
+  </head>
+
+  <body>
+    Number 物件方法 Number Methods/ 
+    Math 物件方法/ 
+    Date 物件方法
+    <script>
+      //顯性的強制轉型
+      console.log(Number(0));
+      console.log(Number("0"));
+      console.log(Number("apple"));//NaN = Not a Number
+      //但如果去檢查NaN時，NaN是一個數字
+      console.log(Number.isNaN(NaN));//true
+      console.log(isNaN("apple"));//true //隱性的轉型 //檢查轉換成數字時是不是NaN
+      console.log(Number.isNaN("apple"));//false，先檢查是不是數字，不是救回傳false
+
+      console.log(Number(0.12345))
+
+      //空字串或空白字串都會被轉換成0 faslsy value
+      console.log(Boolean("")); //false
+      console.log(Number("")); //0
+      console.log(Number(" ")); //0
+      console.log(Number(false)); //0
+      console.log(Number(true)); //1
+
+      //isInteger() 會檢查是否為整數
+      console.log(Number.isInteger(42)); //true
+      console.log(Number.isInteger(42.2)); //false
+
+      // parseFloat() 會將字串轉換成浮點數
+      console.log(Number.parseFloat(42)); //42
+      console.log(Number.parseFloat(42.2)); //42.2
+      console.log(Number.parseFloat("42")); //42
+      console.log(Number.parseFloat("42.2")); //42.2
+
+      // parseInt() 會將字串轉換成整數
+      console.log(Number.parseInt(42)); //42
+      console.log(Number.parseInt(42.2)); //42
+      console.log(Number.parseInt("42")); //42
+      console.log(Number.parseInt("42.2")); //42
+
+      //------Math物件方法------
+      //.round() 會將數字四捨五入
+      console.log(Math.round(3.574))//4
+      //.floor() 會將數字向下取整
+      console.log(Math.floor(3.574))//3
+      //.ceil() 會將數字向上取整
+      console.log(Math.ceil(3.574))//4
+
+      //.random() 會產生介於0~1之間的隨機數
+      console.log(Math.random())//0~1的隨機數
+      //.max() 會回傳最大值
+      console.log(Math.max(7,1,5,3)); //7
+      //.min() 會回傳最小值
+      console.log(Math.min(7,1,5,3)); //1
+
+      //圓周率
+      console.log(Math.PI); //3.141592653589793
+      //自然對數的底數
+      console.log(Math.E); //2.718281828459045
+
+      //------Date物件方法------
+      const now = new Date();
+      console.log(now);
+
+      const yesterday = new Date("2024-02-28");
+      const yesterday2 = new Date("2024/2/28");
+      const yesterday3 = new Date("2024.02.28");
+      const yesterday4 = new Date("2024,02,28");
+      const yesterday5 = new Date(2024-2-28);
+      const yesterday6 = new Date(2024/2/28);
+      const yesterday7 = new Date(2024,2,28);
+      console.log(yesterday);
+      console.log(yesterday2);
+      console.log(yesterday3);
+      console.log(yesterday4);
+      console.log(yesterday5);
+      console.log(yesterday6);
+      console.log(yesterday7);
+
+      console.log(now.getFullYear());//2024
+      console.log(now.getMonth());//1 要手動+1
+      console.log(now.getDate());//29
+      console.log(now.getDay());//4
+      console.log(now.getHours());
+      console.log(now.getMinutes());
+      console.log(now.getSeconds());
+
+
+    </script>
+  </body>
+</html>

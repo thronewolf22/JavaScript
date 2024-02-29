@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習-精簡農場資訊</title>
+    練習-精簡農場資訊
+
+    練習-農場 資訊太複雜了，你決定精簡一下，
+    請完成以下操作：
+    farm 裡的每個動物都執行一個叫 createAnimal 的函數，是用來精簡動物資訊的
+    createAnimal 會提取 name 屬性，並新增一個 count 屬性，value 為公的 + 母的數量，並回傳一個處理過的物件
+    將提取完的新動物資訊存成一個新的變數 newAnimals
+    移除 index 為 2 的一種動物，並同時新增三種新的動物 {name: '牛', count: 11}, {name: '驢', count: 7}, { name: '雞', count: 26 }
+    將目前的陣列切出兩個小陣列，
+    第一個陣列是 index 0 - 1 的陣列 (包含1)
+    第二個陣列是 index 5 以後的陣列
+    使用 concat 合併兩個小陣列，存成 allAnimals 變數
+    使用 forEach 在主控台 log 出 「動物 XXX ，數量 XXX」
+
+  </head>
+
+  <body>
+    <script>
+      let farm=[
+        {
+          id:1,
+          name:"豬",
+          en:"pig",
+          male:11,
+          female:5,
+          isLarge:false
+        },
+        {
+          id:2,
+          name:"虎",
+          en:"tiger",
+          male:3,
+          female:10,
+          isLarge:true
+        },
+        {
+          id:3,
+          name:"馬",
+          en:"horse",
+          male:9,
+          female:8,
+          isLarge:true
+        },
+        {
+          id:4,
+          name:"羊",
+          en:"sheep",
+          male:22,
+          female:34,
+          isLarge:false
+        },
+        {
+          id:5,
+          name:"兔",
+          en:"rabbit",
+          male:37,
+          female:4,
+          isLarge:false
+        }
+      ]
+      
+      function creatAnimail(animal){
+        // {name:name;
+        // count:公+母}
+        return{
+          name: animal.name,
+          count: animal.male + animal.female,
+        }
+      }
+
+      let newAnimals = [];
+      for(let animal of farm){
+        let info = creatAnimail(animal);
+        //console.log(info);
+
+        newAnimals.push(info);
+      }
+      console.log(newAnimals);
+
+      console.log(newAnimals.splice(2,1,{name:"牛",count:11},{name:"驢",count:7},{name:"雞",count:26}));
+
+      console.log(newAnimals);
+
+      let newAnimals1 = newAnimals.slice(0,2);
+      let newAnimals2 =newAnimals.slice(5);
+      let allAnimals = newAnimals1.concat(newAnimals2);
+
+      //console.log(allAnimals);
+
+      allAnimals.forEach(function(item, i, arr){
+        console.log(`動物:${item.name}, 數量:${item.count}`);
+      })
+      
+      
+      
+
+    </script>
+  </body>
+</html>

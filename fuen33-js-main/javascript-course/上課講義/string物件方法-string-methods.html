@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String 物件方法 String Methods</title>
+  </head>
+
+  <body>
+    String 物件方法 String Methods
+    <script>
+      const greeting = "Hello World";
+
+      //.toUpperCase() 全部變大寫
+      console.log(greeting.toUpperCase());
+
+      //.toLowerCase() 全部變小寫
+      console.log(greeting.toLowerCase());
+
+      //.trim() 去除前後空白
+      const greetingTrim = "     Hello World      ";//前後多於空白
+      console.log(greetingTrim);
+      console.log(greetingTrim.trim());
+
+      // .charAt() 取得指定位置的字元
+      console.log(greeting.charAt(6));//第6位:w
+
+
+      // .replace() 替換
+      console.log(greeting.replace("Hello", "Hi"));
+
+      // .replaceAll() 替換全部
+      const replaceAll = "Hello world world!";
+      console.log(replaceAll.replaceAll("world", "Taiwan"));
+
+      // .slice() 切割
+      console.log(greeting.slice(0, 5));//Hello 
+      console.log(greeting.slice(6));//World
+      console.log(greeting.slice(-1));//d
+      console.log(greeting.slice(11, 6));//倒過來無效果(空字串)
+
+      // .substring() 提取字符串的一部分
+      console.log(greeting.substring(6, 11));//World
+      console.log(greeting.substring(11, 6));//倒過來一樣World
+      console.log(greeting.substring(-1));//等於沒切
+
+      // .indexOf() 查找字串的索引值
+      console.log(greeting.indexOf("W"));//6
+      console.log(greeting.indexOf("o"));//4
+      console.log(greeting.indexOf("World"));//6
+      console.log(greeting.indexOf("world"));//-1(沒找到)
+    </script>
+  </body>
+</html>

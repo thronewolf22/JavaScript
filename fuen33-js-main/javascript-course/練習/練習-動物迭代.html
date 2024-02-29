@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習-動物迭代</title>
+  </head>
+
+  <body>
+    請只使用迭代 Array 物件方法 (filter, map, sort, some, every, find, findIndex, reduce)，找出 練習-農場 farm 裡所有英文名稱裡不含有 e 的動物，依照母的數量的大小排列，最後計算出母的數量總數，並存成 countAnimal 變數
+
+    <script>
+      let farm=[
+        {
+          id:1,
+          name:"豬",
+          en:"pig",
+          male:11,
+          female:5,
+          isLarge:false
+        },
+        {
+          id:2,
+          name:"虎",
+          en:"tiger",
+          male:3,
+          female:10,
+          isLarge:true
+        },
+        {
+          id:3,
+          name:"馬",
+          en:"horse",
+          male:9,
+          female:8,
+          isLarge:true
+        },
+        {
+          id:4,
+          name:"羊",
+          en:"sheep",
+          male:22,
+          female:34,
+          isLarge:false
+        },
+        {
+          id:5,
+          name:"兔",
+          en:"rabbit",
+          male:37,
+          female:4,
+          isLarge:false
+        }
+      ]
+      
+      // 找出英文名稱中不含有 "e" 的動物
+      const animalsWithoutE = farm.filter(animal => !animal.en.includes('e'));//在filter()中應用!includes()
+      console.log(animalsWithoutE);//顯示過濾後的動物列表
+
+      // 根據母的數量大小進行排序
+      const sortedAnimals = animalsWithoutE.sort((a, b) => b.female - a.female);
+      console.log(sortedAnimals);//顯示排序後的動物列表
+
+      // 計算母的數量總和
+      const countAnimal = sortedAnimals.reduce((total, item) => total + item.female, 0);
+      console.log(countAnimal);// 顯示母的數量總和
+
+      //另一種計算方法
+      let total = 0;
+      for (let animal of sortedAnimals) {
+        total += animal.female;
+      }
+      console.log(total);// 顯示母的數量總和
+
+    </script>
+  </body>
+</html>

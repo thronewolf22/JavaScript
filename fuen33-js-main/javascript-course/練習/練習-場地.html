@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習-場地</title>
+  </head>
+
+  <body>
+    <script>
+
+      let arrayFarm=[
+        {
+          id:1,
+          name:"豬",
+          en:"pig",
+          male:11,
+          female:5,
+          isLarge:false
+        },
+        {
+          id:2,
+          name:"虎",
+          en:"tiger",
+          male:3,
+          female:10,
+          isLarge:true
+        },
+        {
+          id:3,
+          name:"馬",
+          en:"horse",
+          male:9,
+          female:8,
+          isLarge:true
+        },
+        {
+          id:4,
+          name:"羊",
+          en:"sheep",
+          male:22,
+          female:34,
+          isLarge:false
+        },
+        {
+          id:5,
+          name:"兔",
+          en:"rabbit",
+          male:37,
+          female:4,
+          isLarge:false
+        }
+      ]
+      
+      let pig = arrayFarm[0];
+      let tiger = arrayFarm[1];
+      let horse = arrayFarm[2];
+      let sheep = arrayFarm[3];
+      let rabbit = arrayFarm[4];
+      
+
+      let pigField = pig.isLarge || (pig.male + pig.female)>20 ? "大" : "小";
+      let tigerField = tiger.isLarge || (tiger.male + tiger.female)>20 ? "大" : "小";
+      let horseField = horse.isLarge || (horse.male + horse.female)>20 ? "大" : "小";
+      let sheepField = sheep.isLarge || (sheep.male + sheep.female)>20 ? "大" : "小";
+      let rabbitField = rabbit.isLarge || (rabbit.male + rabbit.female)>20 ? "大" : "小";
+      console.log(pigField);
+      console.log(tigerField);
+      console.log(horseField);
+      console.log(sheepField);
+      console.log(rabbitField);
+      
+      //for/of迴圈重構
+      for(let animal of arrayFarm){
+        let animalField = animal.isLarge || (animal.male + animal.female)>20 ? "大" : "小";
+        console.log(`動物${animal.name}需要 ${animalField}場地`);
+      }
+
+      //for迴圈重構
+      for(i = 1; i < arrayFarm.length; i++){
+        let animalField = arrayFarm[i].isLarge || (arrayFarm[i].male + arrayFarm[i].female)>20 ? "大" : "小";
+        console.log(`動物${arrayFarm[i].name}需要 ${animalField}場地`);
+      }
+
+      
+
+      // console.log(`動物豬需要 ${pigField}場地`);
+      // console.log(`動物虎需要 ${tigerField}場地`);
+      // console.log(`動物馬需要 ${horseField}場地`);
+      // console.log(`動物羊需要 ${sheepField}場地`);
+      // console.log(`動物兔需要 ${rabbitField}場地`);
+
+    </script>
+  </body>
+</html>

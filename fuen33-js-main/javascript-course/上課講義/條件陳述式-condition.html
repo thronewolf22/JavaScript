@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>條件陳述式 Condition</title>
+  </head>
+
+  <body>
+    <script>
+      let fruit ="香蕉";
+      let sweet = true;
+
+      if(fruit==="蘋果"){
+        console.log("是蘋果");
+      }else{
+        console.log("不是蘋果");
+      }
+
+      if(fruit === "檸檬"){
+        console.log("是檸檬");
+      }else if(fruit === "蘋果"){
+        console.log("是蘋果");
+      }else{
+        console.log("未知的水果");
+      }
+      
+      //switch / case
+      switch(fruit){
+        case "檸檬":
+          console.log("是檸檬");
+          break;
+        case "蘋果":
+          console.log("是蘋果");
+          break;
+        default:
+          console.log("未知的水果");
+          break;//養成好習慣
+          //如果沒加break，會一直執行到最後(輸出所有console.log)
+      }
+
+      
+    </script>
+  </body>
+</html>

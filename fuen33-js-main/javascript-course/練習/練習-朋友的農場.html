@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習-朋友的農場</title>
+  </head>
+
+  <body>
+    <script>
+
+      let arrayfarm=[
+      {
+          id:1,
+          name:"豬",
+          en:"pig",
+          male:11,
+          female:5,
+          isLarge:false
+        },
+        {
+          id:2,
+          name:"虎",
+          en:"tiger",
+          male:3,
+          female:10,
+          isLarge:true
+        },
+        {
+          id:3,
+          name:"馬",
+          en:"horse",
+          male:9,
+          female:8,
+          isLarge:true
+        },
+        {
+          id:4,
+          name:"羊",
+          en:"sheep",
+          male:22,
+          female:34,
+          isLarge:false
+        },
+        {
+          id:5,
+          name:"兔",
+          en:"rabbit",
+          male:37,
+          female:4,
+          isLarge:false
+        }
+      ]
+
+      let myAnimal = arrayfarm[arrayfarm.length - 1];
+
+      let friendsAnimal = {...myAnimal};
+      friendsAnimal.male = 2;
+      friendsAnimal.female = 0;
+
+      console.log(myAnimal);
+      console.log(friendsAnimal);
+
+      //複製整個農場的話，裡面的動物資料會被動到  
+      let testFarm = [...arrayfarm];
+      let testFriendsAnimal = testFarm[testFarm.length - 1];
+      testFriendsAnimal.male = 2;
+      testFriendsAnimal.female = 0;
+
+      console.log(arrayfarm);
+      console.log(testFarm);
+      console.log(testFriendsAnimal);
+      
+
+      
+      //複製整個農場的話，裡面的動物資料會被動到
+      let friendsfarm2 = Object.assign[{}, arrayfarm];
+      let friendsfarm ={...arrayfarm};
+      console.log(friendsfarm);
+      console.log(friendsfarm2);
+      friendsfarm[1].female = 1;
+      console.log(friendsfarm);
+
+
+
+
+    </script>
+  </body>
+</html>

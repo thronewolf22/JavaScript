@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array 物件方法 Array Methods</title>
+  </head>
+
+  <body>
+    Array 物件方法 Array Methods
+    <script>
+      
+      let greeting = "Hello World";
+      console.log(greeting);
+      let greetingObj = new String("Hello Worldi");
+      console.log(greetingObj);
+
+      let numberObj = new Number(0);
+      console.log(numberObj);
+
+      let booleanObj = new Boolean(false);
+      console.log(booleanObj);
+
+      //顯性的強制轉型
+      console.log(new Number("1"));
+      console.log(new Boolean("true"));
+      console.log(new Boolean(12));
+      console.log(new Boolean(0));
+      console.log(new Boolean(""));
+      console.log(new String(123));
+
+      let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+
+      // //.push() 加入於最後
+      // fruits.push("peach");
+      // console.log(fruits);//原本的陣列"會"被修改
+      // console.log(fruits.push("peach"));//回傳陣列長度
+
+      // //.pop()去尾
+      // console.log(fruits.pop());
+      // console.log(fruits);//原本的陣列"會"被修改
+
+      // //.shiftf() 去頭
+      // console.log(fruits.shift());
+      // console.log(fruits);//原本的陣列"會"被修改
+
+      // //.unshift() 加入於頭
+      // console.log(fruits.unshift("peach","watermelon"));
+      // console.log(fruits);//原本的陣列"會"被修改
+
+      // //.slice()切割
+      // console.log(fruits.slice(2,3));//
+      // console.log(fruits.slice(1));
+      // console.log(fruits.slice(-2));//原本的陣列"不會"被修改
+
+      // //.splice()先刪除指定位置，再加入
+      // console.log(fruits.splice(1,2,"peach","watermelon"));
+      // //從[1]元素開始，刪除2個元素，並加入peach和watermelon
+      // console.log(fruits);//原本的陣列"會"被修改
+
+      // //concat() 合併兩個或多個陣列
+      // let fruits2 = ["peach","watermelon"];
+      // let fruits3 = ["kiwi"];
+      // console.log(fruits.concat(fruits2,fruits3));  
+      // //這兩個是一樣的效果
+      // console.log([...fruits,...fruits2,...fruits3]);
+      // console.log(fruits);//原本的陣列"不會"被修改
+
+      // //sort() 對陣列的元素進行排序
+      // console.log(fruits.sort());
+      // console.log(fruits);//原本的陣列"會"被修改
+
+      // //reverse() 陣列反轉
+      // console.log(fruits.reverse());
+      // console.log(fruits);//原本的陣列"會"被修改
+
+      // //indexOf() 在陣列中"找第一個"指定元素，有則回傳index，沒有則回傳-1
+      // console.log(fruits.indexOf("orange"));
+      // console.log(fruits.indexOf("peach"));
+      // let testFruits = [...fruits];//複製
+      // testFruits.push("orange");//加上一個重複的值
+      // console.log(testFruits);
+      // console.log(fruits.indexOf("orange"));//只會找到第一個的index
+
+      // //includes() "查詢"陣列中是否有指定元素，有則回傳true，沒有則回傳false
+      // console.log(fruits.includes("orange"));
+      // console.log(fruits.includes("peach"));
+
+      // // //forEach() 陣列中的每一個元素都會執行一次指定的函式
+      // // fruits.forEach(function(fruit,i,fruits){
+      // //   console.log(`水果:${fruit}, index:${i}, 在${fruits}水果籃之中`);
+      // // });
+      // //
+      // console.log(fruits);//原本的陣列"不會"被修改
+
+      // fruits.forEach((item, i, arr)=>{
+      //   console.log(item);
+      //   console.log(i);
+      //   console.log(arr.length);
+      // })
+
+      // //取得最後一個元素
+      // console.log(fruits[fruits.length-1]);
+      // console.log(fruits);
+
+      const products = [
+        {name: '筆記型電腦', category: '電子產品', price: 30000, stock: 10},
+        {name: '襯衫', category: '服裝', price: 200, stock: 500},
+        {name: '咖啡機', category: '家電', price: 4000, stock: 5},
+        {name: '書籍', category: '文學', price: 300, stock: 100},
+        {name: '智能手機', category: '電子產品', price: 20000, stock: 15},
+        {name: '牛仔褲', category: '服裝', price: 600, stock: 30},
+      ];
+
+      //map() 迭代陣列中的每個元素並回傳，形成一個新的陣列
+      let productNames = products.map((item, i, arr)=>{
+        return item.name;
+      });
+      //簡化1，拿掉return跟{}
+      let productNames1 = products.map((item, i, arr)=>
+         item.name
+      );
+      //簡化2，拿掉i, arr
+      let productNames2 = products.map((item)=>
+         item.name
+      );
+
+      console.log(productNames);
+
+      //filter()
+      let electronicProducts = products.filter((item, i, arr)=>{
+        return item.category ==="電子產品";
+      });//篩選完會回傳陣列，用一個變數接住
+
+      console.log(electronicProducts);
+
+          //經常用來排除元素
+      let otherProducts = products.filter((item)=>
+        item.category !=="文學"//簡寫
+      );
+      console.log(otherProducts);
+
+      //sort()排序，()裡面慣用a,b
+      let ascendProducts = products.sort((a,b)=>{
+        return a.price - b.price;
+      })
+      console.log(ascendProducts);//升冪排序
+
+      let descendProducts = products.sort((a,b)=>{
+        return b.price - a.price;
+      })
+      console.log(descendProducts);//降冪排序
+
+      //some() 檢查陣列中是否至少有一個符合callback條件的元素，有則回傳true，沒有則回傳false
+      const cheeckStock = products.some((item)=>item.stock < 10);
+      console.log(cheeckStock);//檢查庫存
+
+      //every() 檢查陣列中是否所有元素都符合callback條件，有則回傳true，沒有則回傳false
+      const checkPrice = products.every((item)=>item.price > 1000);
+      console.log(checkPrice);
+
+      //find() 搜尋陣列中符合callback條件的元素，找到就回傳，沒找到就回傳undefined
+      const apparelProduct = products.find((item)=>item.category==="服裝" );
+      console.log(apparelProduct);
+
+      const noResultProduct = products.find((item)=>item.stock >1000 );
+      console.log(noResultProduct);//沒找到=>undefined
+
+      //findIndex() 沒找到=>-1
+      const apparelIndexProduct = products.findIndex((item)=>item.category==="服裝" );
+      console.log(apparelIndexProduct);
+
+      const noResultIndexProduct = products.findIndex((item)=>item.stock >1000 );
+      console.log(noResultIndexProduct);//沒找到=>-1
+
+      //reduce() 累加器
+      //accumulator累加器, currentValue當前值，initialValues初始值
+      // arr.reduce((accumulator累加器, currentValue當前值)=>{
+      //   return accumulator累加器 + currentValue當前值 
+      // }, initialValues初始值)
+
+      const totalStock = products.reduce((total, item)=>total + item.stock
+      , 0)
+      console.log(totalStock);
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>型別間的轉換 Type Conversion & Casting</title>
+</head>
+
+<body>
+  型別間的轉換 Type Conversion & Casting
+  <script>
+    const greeting = ["Hello", "world","!"];
+    const float = 0.847
+    const interger = 4;
+
+    //.toString() 轉換為字串
+    console.log(greeting.toString());
+    console.log(interger.toString());
+    console.log(String(interger));
+    console.log(String(greeting));
+
+    //.toFixed() 保留小數點後幾位
+    console.log(interger.toFixed(2));//4.00
+    console.log(float.toFixed(2));//0.85
+    console.log(float.toFixed(0));//1
+    console.log(float.toFixed());//1
+
+    //隱性強制轉型
+    const a = 1;
+    const b = "1";
+    console.log(a+b);//字串1+1=11
+
+    const c = "8";
+    console.log(a+c);//字串1+8=18(+優先用於字串)
+    console.log(b*c);//數學1*8=8
+    console.log(c-b);//數學8-1=7
+
+    //typeof
+    const check = Number("0apple");
+    console.log(typeof check === "number");//true
+    console.log(typeof check === "numer" && check!==isNaN);//false
+
+    //split() 在字串中找到指定字符，以字符分割字串，並存成陣列
+    const string = "Hi,,Hello,World,Taiwan";
+    console.log(string.split(","));
+    
+    //.join() 將陣列的所有元素連接成一個字串
+    const array = ["Hello","world!"];
+    console.log(array.join(" "));
+
+    //JSON.stringify() 將陣列轉換為字串
+    const Info = { 
+      name: "John", 
+      age: 30, 
+      color: "blue",
+    };
+
+    console.log(JSON.stringify(Info));
+
+    //JSON.parse() 將字串轉換為陣列
+    const jsonString = '{"name":"John","age":30,"color":"blue"}';
+
+    console.log(JSON.parse(jsonString));
+
+    //淺拷貝
+    const shallow = {...Info};
+    shallow.color = "red";
+    console.log(shallow);
+    console.log(Info);
+
+    //深拷貝
+    const newInfo = JSON.parse(JSON.stringify(Info));
+    newInfo.age = 20;
+    console.log(newInfo);
+    console.log(Info);
+
+  </script>
+</body>
+
+</html>

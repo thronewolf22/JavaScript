@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習-食物名稱</title>
+  </head>
+
+  <body>
+    在 HTML 裡有一系列英文的食物名稱，
+    請使用 forEach + 學過的語法，將這些食物名稱轉換為首字大寫，詞之間用空格隔開，如以下格式： “Chicken nugget”
+    處理過後的陣列請存成 newFood 變數，並在 console log 出來
+
+    <script>
+      let food = [
+        '   chicken-nuggets ',
+        ' beef-stew   ',
+        'apple-pie   ',
+        '  fish-tacos',
+        '  cheese-burger ',
+        '  spaghetti-bolognese ',
+        '   bacon-lettuce-tomato  ',
+        '   egg-salad  ',
+        '  garlic-bread ',
+        '  honey-mustard-chicken ',
+      ];
+
+      let newFood = [];
+      food.forEach((food)=>{
+        const formatName = food.trim().replaceAll("-"," ");
+        console.log(formatName);
+        const firstletter = formatName.charAt(0).toUpperCase();//取得開頭字，並改大寫
+        const otherWords = formatName.substring(1);//取得開頭以後的所有字
+        const newName = `${firstletter}${otherWords}`;
+        console.log(newName);
+        newFood.push(newName);
+      })
+
+      console.log(newFood);
+
+      //上述也可以用map()寫法，記得要return
+      newFood = food.map((food)=>{
+        const formatName = food.trim().replaceAll("-"," ");
+        const firstletter = formatName.charAt(0).toUpperCase();
+        const otherWords = formatName.substring(1);
+        const newName = `${firstletter}${otherWords}`;
+        return newName;
+      })
+
+    </script>
+  </body>
+</html>
