@@ -4,13 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>事件處理 Event Handle</title>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0;
+        }
+      }
+
+      .greeting {
+        background: lightblue;
+        opacity: 0;
+        /* display: none; */
+      }
+
+      .show {
+        display: block;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      /* 淡入效果 */
+      .fadeOut {
+        animation: fadeOut 0.5s;
+      }
+
+      /* 淡出效果 */
+      .fadeIn {
+        animation: fadeIn 0.5s;
+        opacity: 1;
+      }
+    </style>
   </head>
 
   <body>
    
-    <button onclick="showAlert()">HTML onclick 呼叫 alert</button>
+    <!-- <button onclick="showAlert()">HTML onclick 呼叫 alert</button> -->
     <!-- showAlert要加() -->
-    <button id="alertBtn">DOM onclick 呼叫 alert</button>
+    <!-- <button id="alertBtn">DOM onclick 呼叫 alert</button>
     <button id="listenerAlertBtn">DOM addEventListener 呼叫 alert</button>
 
     <div>
@@ -18,39 +64,106 @@
       <button id="mouseoutBtn">mouseout 事件</button>
       <input type="text" id="focusInput" value="focus事件(解除:blur事件)">
     </div>
+    <div>
+      <input type="text" id="keydownInput" value="keydown 事件" />
+      <input type="text" id="keypressInput" value="keypress 事件" />
+      <input type="text" id="keyupInput" value="keyup 事件" />
+    </div> -->
+
+
+    <input type="button" class="greetingBtn" data-index="0" value="打個招呼" />
+    <div class="greeting">Hi!</div>
     <script>
-      function showAlert(){
-        alert("Hello");
-      }
+      // function showAlert(){
+      //   alert("Hello");
+      // }
 
-      document.querySelector("#alertBtn").onclick = showAlert;//showAlert這裡不用()
+      // document.querySelector("#alertBtn").onclick = showAlert;//showAlert這裡不用()
 
-      document.getElementById("listenerAlertBtn").addEventListener("click", showAlert);
+      // document.getElementById("listenerAlertBtn").addEventListener("click", showAlert);
 
-      document.querySelector("#mouseoverBtn").addEventListener("mouseover", function(){
-        console.log("mouseover");
-      });
+      // document.querySelector("#mouseoverBtn").addEventListener("mouseover", function(){
+      //   console.log("mouseover");
+      // });
 
-      document.querySelector("#mouseoutBtn").addEventListener("mouseout", function(){
-        console.log("mouseout");
-      });
+      // document.querySelector("#mouseoutBtn").addEventListener("mouseout", function(){
+      //   console.log("mouseout");
+      // });
 
-      //focus，維持focus狀態
-      document.querySelector("#focusInput").addEventListener("focus", function(){
-        console.log("focus");
-      });
+      // //focus，維持focus狀態
+      // document.querySelector("#focusInput").addEventListener("focus", function(){
+      //   console.log("focus");
+      // });
 
-      //blur，解除focus狀態
-      document.querySelector("#focusInput").addEventListener("blur", function(){
-        console.log("blur");
-      });
+      // //blur，解除focus狀態
+      // document.querySelector("#focusInput").addEventListener("blur", function(){
+      //   console.log("blur");
+      // });
 
-      //keydown 鍵盤按"下"時觸發
+      
 
-      //keypress 鍵盤按下時觸發字符輸入
+     
 
-      //keyup 按鍵釋放時觸發
+      
+      // //keydown 鍵盤按"下"時觸發
+      // document.querySelector('#keydownInput').addEventListener('keydown', () => {
+      //   console.log('keydown!');
+      // });
 
+      //  //keypress 鍵盤按下時觸發字符輸入
+      // document.querySelector('#keypressInput').addEventListener('keypress', () => {
+      //   console.log('keypress!');
+      // });
+
+      // //keyup 按鍵釋放時觸發
+      // document.querySelector('#keyupInput').addEventListener('keyup', () => {
+      //   console.log('keyup!');
+      // });
+
+      //DOM加載好時要做的事
+      document.addEventListener("DOMContentLoaded",()=>{
+        console.log("DOM加載好了");
+        const greetingBtnEl =document.querySelector(".greetingBtn");
+        const greetingEL = document.querySelector(".greeting");
+        // console.log(greetingBtnEl);
+
+        let visible =false;
+        greetingBtnEl.addEventListener("click",(e)=>{
+          // console.log(e);
+          // console.log(e.type);
+          // console.log(e.target);//很重要
+          // console.log(e.target.dataset.index);//找到data-index的值:0
+          //習慣上會在大的東西上綁事件聆聽，再用target去找
+          
+          //點擊按鈕，讓class="greeting"執行以下.classList
+          //.add() class本來沒有，加上show
+          // greetingEL.classList.add("show");
+
+          //.remove() class本來有show，移除
+          // greetingEL.classList.remove("show");
+
+          //.toggle() class本來有就移除，沒有就加上
+          // greetingEL.classList.toggle("show");//(開關效果)
+
+          //.contains判斷class有沒有show
+          //.replace() 有就替換，沒有就加上
+          // if(greetingEL.classList.contains("show")){
+          //   greetingEL.classList.replace("show","hide");
+          // }else{
+          //   greetingEL.classList.replace("hide","show");
+          // }
+
+          //if(visible === true)
+          if(visible){
+            greetingEL.classList.add("fadeOut")
+            greetingEL.classList.remove("fadeIn")
+          }else{
+            greetingEL.classList.add("fadeIn")
+            greetingEL.classList.remove("fadeOut")
+          }
+          visible = !visible;
+        })
+      })
 
     </script>
   </body>

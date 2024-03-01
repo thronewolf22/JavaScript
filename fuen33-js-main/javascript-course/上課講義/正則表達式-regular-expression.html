@@ -7,6 +7,24 @@
   </head>
 
   <body>
-    <script></script>
+    正則表達式是用來比對字串用(regex/regexp)
+    <script>
+      const string = "Hello world";
+      let greeting = /Hello/;
+      //.test() 檢查是否有符合的字串，回傳布林值
+      console.log(greeting.test(string));//true 有找到
+
+      const place = new RegExp("world");
+      //.exec() 檢查正則表達式是否包含字串，回傳null或是陣列
+      console.log(place.exec(string));//[ 'world', index: 5, input: 'Hello World', groups: undefined ]
+
+      //.match() 檢查字串是否包含正則表達式，回傳null或是陣列
+      console.log(string.match(/or/));//[ 'or', index: 1, input: 'Hello world', groups: undefined ]
+
+      //.replace() 用正則表達式取代字串
+      console.log(string.replace(/world/, "Taiwan"));//Hello Taiwan
+
+
+    </script>
   </body>
 </html>

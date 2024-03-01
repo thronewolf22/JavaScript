@@ -4,9 +4,140 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>表單處理 Form</title>
+    <style>
+      .msg{
+        color: red;
+      }
+    </style>
   </head>
 
   <body>
-    <script></script>
+    <form id="infoForm">
+      <div>
+        <label for="nameInput">姓名</label>
+        <input type="text" name="name" value="Wolf" id="nameInput"/>
+      </div>
+      
+      <div>
+        <label for="colorInput">喜歡的顏色</label>
+        <input type="text" name="color" value="" id="colorInput">
+      </div>
+  
+      <div>
+        <div>喜歡的寵物:貓</div>
+        <input type="hidden" name="pet" value="cat" id="petInput">
+
+      <!-- 在表單內的button的type屬性如果沒有預設值的話，預設為submit -->
+        <button type="button">普通的按鈕</button>
+        <input type="submit" value="提交" />
+        <!-- submit會重新整理頁面 -->
+    </form>
+
+    <!-- 用novalidate讓表單先不進行驗證 -->
+    <form id="signupForm" novalidate>
+      <div>
+        <label for="accountInput">帳號</label>
+        <input type="text" name="account" id="accountInput" required />
+        <div class="msg" id="accountMsg"></div>
+      </div>
+      <div>
+        <label for="passwordInput">密碼</label>
+        <input type="password" name="password" id="passwordInput" required minlength="6" maxlength="12"/>
+        <div class="msg" id="passwordMsg"></div>
+      </div>
+      <div>
+        <label for="emailInput">Email</label>
+        <input type="email" name="email" id="emailInput"/>
+      </div>
+      <div>
+        <label for="ageInput">年齡</label>
+        <input type="number" name="age" id="ageInput"/>
+      </div>
+      <div>
+        <label for="birthdayInput">生日</label>
+        <input type="date" name="birthday" id="birthdayInput"/>
+      </div>
+      <div>
+        <label for="fileInput">檔案</label>
+        <input type="file" name="file" id="fileInput"/>
+      </div>
+      <div>
+        <label for="commetTextarea">留言</label>
+        <textarea name="comment" id="commetTextarea" cols="30" rows="10">我想說...</textarea>
+      </div>
+      <button type="submit" form="infoForm">送出資訊表單</button>
+      <button type="submit" form="signupForm">送出註冊</button>
+    </form>
+    
+
+    <script>
+      const nameInputEl = document.querySelector("#nameInput")
+      console.log(nameInputEl.value);
+      document.querySelector("#colorInput").value = "blue";
+
+      // blur (not focus)的時候觸發change事件
+      nameInputEl.addEventListener("change",(event)=>{
+        console.log(event.target.value);
+      })
+      console.log(document.querySelector(`[name="pet"]`).value);
+
+      // JSON
+      document.querySelector("#infoForm").addEventListener("submit",(event)=>{
+        event.preventDefault();
+        console.log("資訊表單已提交");
+        console.log(event.target.elements);
+
+        let formObj ={}
+        for(let element of event.target.elements){
+          //篩選掉沒有name屬性的表單內容(按鈕)
+          if(element.name){
+            formObj[element.name] = element.value
+          }
+        }
+        console.log(formObj);//{name: 'Wolf', color: 'blue', pet: 'cat'}
+        //JSON.stringify()將物件轉換為JSON字串
+        console.log(JSON.stringify(formObj));
+
+      })
+
+      document.querySelector("#signupForm").addEventListener("submit",(event)=>{
+        event.preventDefault();
+        console.log("註冊表單已提交");
+
+        const formData = new FormData(event.target);
+
+        //get set (重聽)
+        // formData.get("key")
+        // formData.set("key", value)
+        // formData.set("account", "123456")
+
+        console.log(formData);//這樣看不到，要用迴圈才能看到
+        //其實不輸出結果，formData也是有東西的
+        // for(let [key, value] of formData.entries()){
+        //   console.log(key, value);
+        // }
+
+        let isValid = true;
+        //合法時清空("#accountMsg").textContent
+        document.querySelector("#accountMsg").textContent = "";
+        document.querySelector("#passwordMsg").textContent = "";
+
+        if(!formData.get("account")){
+          document.querySelector("#accountMsg").textContent = "帳號為必填!";
+          isValid = false;
+        }
+
+        if(formData.get("password").length < 6){
+          document.querySelector("#passwordMsg").textContent = "長度需大於6";
+          isValid = false;
+        }
+
+        if (isValid){
+          console.log("註冊表單提交成功!");
+        }
+      });
+      
+
+    </script>
   </body>
 </html>
